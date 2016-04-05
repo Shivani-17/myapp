@@ -8,12 +8,13 @@
 <%= csrf_meta_tags %>
 
 </head>
-<title> ruby | <%= yield(:title) %></title>
+<title>Ruby | <%= yield(:title) %></title>
 <body>
 <%= render 'layouts/header' %>
 <div class="container">
 <%= yield %>
 <%= render 'layouts/footer' %>
+<%= debug(params) if Rails.env.development? %>
 </div>
 </body>
 </html>
