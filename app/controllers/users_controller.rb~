@@ -22,22 +22,19 @@ flash[:success] = "Welcome to the Sample App!"
       render 'new'
     end
   end
-<<<<<<< HEAD
+
 def create
     User.create(user_params)
   end
-=======
->>>>>>> sign-up
+
 
   private
 
   def user_params
-<<<<<<< HEAD
-    params.require(:user).permit(:password, :password_confirmation, :role, :name, :email)
-  end
-end
-end
-=======
+
+ 
+  
+
     params.require(:user).permit(:password, :password_confirmation, :email,:name)
   end 
 end  
@@ -46,4 +43,4 @@ end
 
 
 
->>>>>>> sign-up
+
