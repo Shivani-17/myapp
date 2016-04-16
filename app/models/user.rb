@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
+def feed
+# This is preliminary. See "Following users" for the full implementation.
+Micropost.where("user_id = ?", id)
+end
 has_secure_password
 before_save { self.email = email.downcase }
+has_many :microposts, dependent: :destroy
 before_save :create_remember_token
 private
 def create_remember_token

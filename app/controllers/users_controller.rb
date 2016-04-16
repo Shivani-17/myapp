@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 before_filter :signed_in_user, only: [:index,:edit, :update]
-before_filter :correct_user, only: [:edit, :update]
+before_filter :correct_user, only: [:edit, :update, :index]
 before_filter :admin_user, only: :destroy
   def index
     @users = User.paginate(page: params[:page])
+@user = User.find(params[:id])
+@microposts = @user.microposts.paginate(page: params[:page])
+  
   end
 
   def new
@@ -42,16 +45,7 @@ render 'edit'
 end
 end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
-    else
-      @title = "Sign up"
-      render 'new'
-    end
-  end
+  
 
 def create
   @user=  User.create(user_params)
